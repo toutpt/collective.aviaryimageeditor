@@ -1,0 +1,4 @@
+<layers>
+    <layer name="collective.aviaryimageeditor"
+           interface="collective.aviaryimageeditor.interfaces.IAviary" />
+</layers>
