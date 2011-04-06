@@ -1,19 +1,24 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.aviaryimageeditor">
 
-  <five:registerPackage package="." initialize=".initialize" />
+  <browser:page
+    name="aviary_imageeditor.html"
+    for="*"
+    class=".aviary.AviaryView"
+    template="aviary.pt"
+    permission="cmf.ModifyPortalContent"
+    layer="collective.aviaryimageeditor.interfaces.IAviaryLayer"
+    />
+  <browser:page
+    name="aviary_post_handler"
+    for="*"
+    class=".aviary.AviaryPostHandler"
+    permission="cmf.ModifyPortalContent"
+    layer="collective.aviaryimageeditor.interfaces.IAviaryLayer"
+    />
 
-  <genericsetup:registerProfile
-      name="default"
-      title="collective.aviaryimageeditor"
-      directory="profiles/default"
-      description="Installs the collective.aviaryimageeditor package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  <!-- -*- extra stuff goes here -*- -->
-  
 </configure>

@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.aviaryimageeditor">
+<metal:main fill-slot="main">
+   <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+   <h1 tal:content="context/Title"></h1>
+
+   <div tal:replace="structure provider:plone.belowcontenttitle" />
+     <p tal:content="context/Description"></p>
+
+     <img tal:attributes="src view/img_src;alt view/img_alt" id="myaviaryimage"/>
+     <script type="text/javascript" tal:content="view/javascript"></script>
+     <script type="text/javascript">
+        var _featherLoaded = false;
+
+        Feather_APIKey = aviaryOpt['apikey'];
+        Feather_Theme = aviaryOpt['theme'];
+        Feather_EditOptions = aviaryOpt['editoptions'];
+        Feather_OpenType = aviaryOpt['opentype'];
+        Feather_CropSizes = aviaryOpt['cropsizes'];
+        Feather_PostURL = aviaryOpt['posturl'];
+
+        Feather_OnSave = function(id, url) {
+            var e = document.getElementById(id);
+            e.src = url;
+            aviaryeditor_close();
+        }
+
+        Feather_OnLoad = function() {
+            _featherLoaded = true; 
+        }
+
+        function launchEditor(imageid) {
+            if (_featherLoaded) {
+                var src = document.getElementById(imageid).src;
+                aviaryeditor(imageid, src);
+            }
+        }
+     </script>
+     <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+     <script type="text/javascript">
+        launchEditor('myaviaryimage');
+     </script>
+
+   <div tal:replace="structure provider:plone.abovecontentbody" />
+</metal:main>
+</html>
+
