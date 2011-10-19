@@ -49,10 +49,54 @@ vocab_OpenType = SimpleVocabulary(
   ]
     )
 
+DEFAULT_STIKERS = """[
+    [ 'http://www.aviary.com/images/feather/sticker/bandaid_01.png',
+     'http://www.aviary.com/images/feather/sticker/bandaid_01.png' ],
+    [ 'http://www.aviary.com/images/feather/sticker/beer_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/beer_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/cigar_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/cigar_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/glasses_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/glasses_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/glasses_02.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/glasses_02.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/glasses_03.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/glasses_03.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/glasses_04.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/glasses_04.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_02.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_02.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_04.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_04.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_05.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_05.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_06.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_06.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/hat_07.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/hat_07.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/patch_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/patch_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/sguriken_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/sguriken_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/stache_01.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/stache_01.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/stache_02.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/stache_02.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/stache_03.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/stache_03.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/stache_04.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/stache_04.png' ], 
+    [ 'http://www.aviary.com/images/feather/sticker/stache_05.png',
+     'http://www.aviary.com/images/feather/sticker/thumbs/stache_05.png' ]]"""
+
+
 class AviaryConfiguration(interface.Interface):
     """Aviary configuration"""
     
-    APIKEY = schema.ASCIILine(title=_(u"API Key"))
+    APIKey = schema.ASCIILine(title=_(u"API Key"),
+                              default="")
     
     EditOptions = schema.List(title=_(u"Tools"),
                         default=["all"],
@@ -63,10 +107,21 @@ class AviaryConfiguration(interface.Interface):
                              default="lightbox",
                              vocabulary=vocab_OpenType)
     
-#    CropSizes should be loaded from registry
+    CropSizes =schema.List(title=_(u"Crop sizes"),
+                           default=['320x240','640x480','800x600','1280x1024'],
+                           value_type=schema.ASCIILine(title=_(u"Crop size"))
+                           )
+#
+#    NoCloseButton = schema.Bool(title=_(u"No close button"),
+#                                description=i18n.desc_NoCloseButton)
+
+    Stickers = schema.ASCII(title=_(u"Stickers"),
+                           description=i18n.desc_Stickers,
+                           default=DEFAULT_STIKERS)
     
-    NoCloseButton = schema.Bool(title=_(u"No close button"),
-                                description=i18n.desc_NoCloseButton)
+    Theme = schema.Choice(title=_(u"Theme"),
+                          default="bluesky",
+                          vocabulary=vocab_Theme)
 
     """
      <script type="text/javascript"> 

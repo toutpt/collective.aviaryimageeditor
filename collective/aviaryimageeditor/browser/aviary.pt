@@ -5,16 +5,11 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="collective.aviaryimageeditor">
-<metal:main fill-slot="main">
-   <div tal:replace="structure provider:plone.abovecontenttitle" />
+<metal:main fill-slot="content-core">
 
-   <h1 tal:content="context/Title"></h1>
+     <img tal:attributes="src view/img_src;alt view/img_alt" id="aviaryimage"/>
 
-   <div tal:replace="structure provider:plone.belowcontenttitle" />
-     <p tal:content="context/Description"></p>
-
-     <img tal:attributes="src view/img_src;alt view/img_alt" id="myaviaryimage"/>
-     <script type="text/javascript" tal:content="view/javascript"></script>
+     <script type="text/javascript" tal:content="view/javascript_configuration"></script>
      <script type="text/javascript">
         var _featherLoaded = false;
 
@@ -44,10 +39,9 @@
      </script>
      <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
      <script type="text/javascript">
-        launchEditor('myaviaryimage');
+        launchEditor('aviaryimage');
      </script>
 
-   <div tal:replace="structure provider:plone.abovecontentbody" />
 </metal:main>
 </html>
 

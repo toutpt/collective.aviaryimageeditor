@@ -4,7 +4,7 @@ desc_all = _(u"Using this option will mean any new features that Aviary \
   releases will automatically appear without needing to update your code. \
   This option is recommended.")
 
-desc_NoCloseButton = _(u"Set to ‘true’ to remove the close button. This will \
+desc_NoCloseButton = _(u"Set to 'true' to remove the close button. This will \
   only affect the inject OpenType version of the editor.")
 
 desc_Stickers = _(u"An array of sticker urls in the following format:\

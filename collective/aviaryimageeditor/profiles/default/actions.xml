@@ -5,7 +5,7 @@
   <object name="aviary_edit" meta_type="CMF Action" i18n:domain="collective.aviaryimageeditor">
    <property name="title" i18n:translate="">Edit in aviary</property>
    <property name="description" i18n:translate="">Use aviary simple editor to edit this image</property>
-   <property name="url_expr">string:${object_url}/aviary_imageeditor.html</property>
+   <property name="url_expr">string:${object_url}/aviary_imageeditor_view</property>
    <property name="icon_expr"></property>
    <property name="available_expr">python:object.portal_type == 'Image'</property>
    <property name="permissions">

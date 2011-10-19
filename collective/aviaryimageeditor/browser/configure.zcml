@@ -5,8 +5,9 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.aviaryimageeditor">
 
+  <include package="Products.CMFCore" file="permissions.zcml"/>
   <browser:page
-    name="aviary_imageeditor.html"
+    name="aviary_imageeditor_view"
     for="*"
     class=".aviary.AviaryView"
     template="aviary.pt"
