@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a1'
+version = '1.0'
 
 setup(name='collective.aviaryimageeditor',
       version=version,
       description="Inline Image editing using api of aviary",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
@@ -17,7 +17,7 @@ setup(name='collective.aviaryimageeditor',
       keywords='',
       author='JeanMichel FRANCOIS',
       author_email='toutpt@gmail.com',
-      url='http://svn.plone.org/svn/collective/collective.aviaryimageeditor',
+      url='https://github.com/collective/collective.aviaryimageeditor',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective'],
